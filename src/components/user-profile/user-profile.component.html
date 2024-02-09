@@ -1,0 +1,180 @@
+<div class="container-fluid rounded bg-white "> <!--mt-5 mb-5-->
+    <div class="row">
+        <div class="col-md-3 border-right picture-side">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                    width="150px" src="{{loggedUser.profilePic}}"><span
+                    class="font-weight-bold">{{loggedUser.name}}</span><span
+                    class="text-white-50">{{loggedUser.email}}</span><span>
+                </span></div>
+        </div>
+        <div class="info-container col-md-8 border-right">
+            <div class="p-3 py-5">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="text-right">Main Info</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <!-- user info updated successfully -->
+                        <div class="alert alert-success" *ngIf="userInfoUpdatedSuccess">
+                            <strong>Success!</strong> User info has been updated successfully.
+                        </div>
+
+                        <!-- user info updated failed -->
+                        <div class="alert alert-danger" *ngIf="userInfoUpdatedFailure">
+                            <strong>Failed!</strong> User info has not been updated.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-3">
+                        <label for="Name" class="labels">Name</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #nameInput type="text" class="form-control" placeholder="Your Name"
+                            value="{{loggedUser.name}}" [attr.disabled]="isNameEditing ? null : true">
+                        <div class=" edit-icon" (click)="toggleEdit('name')">
+                            <i class="fas fa-edit ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="row mt-3 ">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">Surname</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #surnameInput type="text" class="form-control" value="" placeholder="surname"
+                            [attr.disabled]="isSurnameEditing ? null : true">
+                        <div class=" edit-icon" (click)="toggleEdit('surname')">
+                            <i class="fas fa-edit ml-2"></i>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="row mt-3 ">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">Email</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #emailInput type="text" class="form-control" placeholder="Enter your email"
+                            value="{{loggedUser.email}}" [attr.disabled]="isEmailEditing ? null : true">
+                        <div class=" edit-icon" (click)="toggleEdit('email')">
+                            <i class="fas fa-edit ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 ">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">Phone Number</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #phoneInput type="text" class="form-control" placeholder="Enter phone number"
+                            value="{{loggedUser.phone}}" [attr.disabled]="isPhoneEditing ? null : true">
+                        <div class=" edit-icon" (click)="toggleEdit('phone')">
+                            <i class="fas fa-edit ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 ">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">Address</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #addressInput type="text" class="form-control" placeholder="Enter your Address"
+                            value="{{loggedUser.Address}}" [attr.disabled]="isAddressEditing ? null : true">
+                        <div class=" edit-icon" (click)="toggleEdit('address')">
+                            <i class="fas fa-edit ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-end"><button class="btn btn-primary profile-button" type="button"
+                        (click)="udateUserInfo()">Update Info</button>
+                </div>
+            </div>
+
+
+            <div class="p-3 py-5">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="text-right">Change Password</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- password changed successfully -->
+                        <div class="alert alert-success" *ngIf="passwordChanged && !wrongPassword && !mismatchPassword">
+                            <strong>Success!</strong> Password has been changed successfully.
+                        </div>
+
+                        <!-- password changed failed -->
+                        <div class="alert alert-danger" *ngIf="wrongPassword">
+                            <strong>Failed!</strong> Wrong Password.
+                        </div>
+
+                        <!-- mismatch password -->
+                        <div class="alert alert-danger" *ngIf="mismatchPassword&&!wrongPassword">
+                            <strong>Failed!</strong> Passwords do not match.
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Old Password -->
+                <div class="row mt-1">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">Old password</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #oldPasswordInput type="{{ showOldPassword ? 'text' : 'password' }}" class="form-control"
+                            placeholder="Current Password" value="" />
+                        <div class="show-password-icon" type="button" (click)="togglePassword('old')">
+                            <i class="{{ showOldPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Password -->
+                <div class="row mt-2">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">New Password</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #newPasswordInput type="{{ showNewPassword ? 'text' : 'password' }}" class="form-control"
+                            placeholder="Enter a New Password" value="" />
+                        <div class="show-password-icon" type="button" (click)="togglePassword('new')">
+                            <i class="{{ showNewPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="row mt-3 ">
+                    <div class="col-md-3 lbls">
+                        <label class="labels">Confirm Password</label>
+                    </div>
+                    <div class="col-md-7">
+                        <input #confirmPasswordInput type="{{ showConfirmPassword ? 'text' : 'password' }}"
+                            class="form-control" placeholder="Confirm New Password" value="" />
+                        <div class="show-password-icon" type="button" (click)="togglePassword('confirm')">
+                            <i class="{{ showConfirmPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 text-end">
+                    <button class="btn btn-primary profile-button" type="button" (click)="changePassword()">Change
+                        Password</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

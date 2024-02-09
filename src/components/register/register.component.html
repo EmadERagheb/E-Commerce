@@ -1,0 +1,107 @@
+<div class=" card shadow-2-strong shadow-lg bg-body-tertiary    m-auto p-2 " style="border-radius: 1rem; ">
+    <div class="card-body ">
+        <div class="text-center">
+            <h1>Enter Your Information</h1>
+        </div>
+        <div class="alert alert-success" *ngIf="submitted">
+            <strong>Success!</strong> You have been registered successfully.
+        </div>
+        <form #userFrom="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" placeholder="Enter your name" name="name" required
+                    #name="ngModel" [class.is-invalid]="name.invalid && name.touched" [(ngModel)]="userModel.name">
+                <small class="text-danger" [class.d-none]="name.untouched || name.valid">Name is required</small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" placeholder="Enter your email" name="email" required
+                    #email="ngModel" [class.is-invalid]="email.invalid && email.touched" [(ngModel)]="userModel.email"
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                @if (email.errors&&(email.invalid || email.touched)) {
+                <small class="text-danger" *ngIf="email.errors['required'] && email.touched">Email is required
+                </small>
+                <small class="text-danger" *ngIf="email.errors['pattern']">Invalid Email </small>
+                }
+
+            </div>
+
+            <div class="row">
+
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input class="form-control" type="tel" placeholder="Enter your phone number" name="phone" required
+                        #phone="ngModel" pattern="01[0-9]{9}" [class.is-invalid]="phone.invalid && phone.touched"
+                        minlength="11" maxlength="11" [(ngModel)]="userModel.phone">
+
+
+                    @if (phone.errors&&(phone.invalid || phone.touched)) {
+                    <small class="text-danger" *ngIf="phone.errors['required'] && phone.touched">Phone number is
+                        required</small>
+                    <small class="text-danger" *ngIf="phone.errors['pattern']">Invalid Phone number</small>
+                    }
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="address">Address</label>
+                    <input class="form-control" type="text" placeholder="Enter your address" name="address" required
+                        #address="ngModel" [(ngModel)]="userModel.Address">
+
+                    <small class="text-danger" [class.d-none]="address.untouched || address.valid">Address is
+                        required</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Gender"> Gender</label>
+                <label for="male">
+                    <input type="radio" name="gender" value="male" #gender="ngModel" [(ngModel)]="userModel.gender">
+                    Male
+                </label>
+                <label for="female">
+                    <input type="radio" name="gender" value="female" #gender="ngModel" [(ngModel)]="userModel.gender">
+                    Female
+                </label>
+                <small *ngIf="gender.errors&&gender.touched">Gender is required </small>
+            </div>
+
+            <div class="row">
+
+
+                <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input class="form-control" type="password" placeholder="Enter your password" name="password"
+                        required #password="ngModel" [(ngModel)]="userModel.password" pattern="^(?=.*[A-Z]).{8,}$">
+
+                    @if (password.errors&&(password.touched || password.invalid)) {
+                    <small class="text-danger" *ngIf="password.errors['required'] && password.touched">Password is
+                        required</small>
+                    <small class="text-danger" *ngIf="password.errors['pattern']">Password must contain at least 8
+                        characters and one uppercase letter</small>
+                    }
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input (input)="passowrdMatch()" class="form-control" type="password"
+                        placeholder="Confirm your password" name="confirm-password" required #confirmPassword="ngModel"
+                        [(ngModel)]="userModel.confirmPassword">
+
+                    @if (confirmPassword.touched ){
+                    <small class="text-danger" *ngIf="confirmPassword.errors?.['required']  ">Confirm
+                        Password is required</small>
+                    <small class="text-danger" *ngIf="!matched&&!confirmPassword.errors?.['required']">Password
+                        doesn't match</small>
+                    }
+
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button type="submit" #register [class.disabled]="!userFrom.valid || !matched" class="register-btn">Get
+                    In
+                    Now!</button>
+            </div>
+        </form>
+
+    </div>
+</div>

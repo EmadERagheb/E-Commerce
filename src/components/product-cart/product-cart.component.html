@@ -1,0 +1,27 @@
+<div class="container product m-5 mx-auto" [style.display]="displayItem">
+
+
+  <div class="row p-3  align-items-center">
+    <div class="col-12 col-lg-3 img-cont d-flex d-lg-block justify-content-center">
+      <img [src]="product.imageCover" alt="product Image" class="img">
+    </div>
+    <div class="col-12 col-lg-3 my-2 text-center fw-bold">
+      {{product.name}}
+    </div>
+    <div class="col-12 col-lg-2 my-2 text-center">
+
+      {{quantity*product.price| number:'1.2-2'}} $
+    </div>
+    <div class="col-12 col-lg-4 text-center d-flex ms-4 ms-lg-0 my-2 justify-content-center justify-content-lg-end">
+      <button class="button m-1" (click)="onMinus(product.id)"><span>-</span></button>
+      <input disabled type="text" class="form-control mx-1 text-center" [value]="quantity" />
+      <button class="button m-1" (click)="onPlus(product.id)"><span>+</span></button>
+      <div class="d-flex justify-conten-center align-items-center mx-3 fs-2">
+        <button (click)="onRemove(product.id)" class="removeBtn">
+          <i class="fa-solid fa-circle-minus remove"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,12 @@
+:host{
+  background-color: var(--fourth-color);
+}
+.theme-color{
+  color: var(--sec-color);
+}
+.product{
+  transition: 0.5s;
+}
+.product:hover{
+  transform: scale(1.1);
+}

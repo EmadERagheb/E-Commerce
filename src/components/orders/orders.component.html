@@ -1,0 +1,28 @@
+<div class="orders">
+  <div class="card p-3 m-5">
+    @if (orders.length!==0) {
+    <div class="row align-items-center d-none d-lg-flex">
+      <div class="col-12 col-lg-3 text-center fw-bold">
+        Transaction
+      </div>
+      <div class="col-12 col-lg-3 my-2 text-center fw-bold">
+        Date
+      </div>
+      <div class="col-12 col-lg-3 my-2 text-center fw-bold">
+        Products
+      </div>
+      <div class="col-12 col-lg-3 my-2 text-center fw-bold">
+        Total Price
+      </div>
+    </div>
+    <div *ngFor="let order of orders;let i= index">
+      <app-order-details [order]="order"></app-order-details>
+    </div>
+    }
+    @else {
+    <div class="text-center my-5 fs-1 theme-color">
+      there are no Orders yet
+    </div>
+    }
+  </div>
+</div>

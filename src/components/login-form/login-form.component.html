@@ -1,0 +1,34 @@
+<div class=" card shadow-2-strong shadow-lg bg-body-tertiary  m-auto" style="border-radius: 1rem; ">
+    <div class="card-body  text-center">
+        <form [formGroup]="loginForm">
+            <h2>Sign in</h2>
+            <p class="text-body-tertiary mb-5">Please enter your login and password!</p>
+            <div class="form-outline mb-4">
+                <label class="form-label d-flex " for="typeEmailX-2">Email</label>
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" formControlName="email"
+                    [class.is-invalid]="formEmail.touched&& formEmail.invalid" />
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label d-flex" for="typePasswordX-2">Password</label>
+                <input [type]="formShowPassword?.value?'text':'password'" id="typePasswordX-2"
+                    class="form-control form-control-lg" formControlName="password"
+                    [class.is-invalid]="formpassword.touched && formpassword.invalid" />
+            </div>
+            <span class="text-danger">{{message}}</span>
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+                <input class="form-check-input me-1" type="checkbox" value="" id="showpasswordInput"
+                    formControlName="showPassword" />
+                <label class="form-check-label" for="showpasswordInput"> Show password </label>
+            </div>
+            <div class="form-check d-flex justify-content-start mb-4">
+                <input class="form-check-input me-1" type="checkbox" value="" id="remmberMeinput"
+                    formControlName="remmberMe" />
+                <label class="form-check-label" for="remmberMeinput"> Remember me </label>
+            </div>
+
+            <button class="signIn-btn" type="submit" [disabled]="loginForm.invalid" (click)="login()">Login</button>
+
+        </form>
+    </div>
+</div>

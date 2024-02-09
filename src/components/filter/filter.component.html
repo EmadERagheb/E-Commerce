@@ -1,0 +1,36 @@
+<div class="row m-0">
+    <div class="col-3 col-md-3 col-lg-2 bg-light m-0 p-0 ">
+        <div class="row m-0 p-0 ">
+            <h3 class="form-label mt-3 mb-1">Select Category</h3>
+            @for (category of categories; track $index)
+            {
+            <p class="col-12 col-md-12 col-lg-12  p-0 m-0"><mat-checkbox  class="custom-checkbox-primary"color="primary" [(ngModel)]="checkCategoryBoxStates[category.id]"
+                    (change)="filter()">{{category.name}}</mat-checkbox></p>
+            }
+        </div>
+        <div class="row m-0 p-0 ">
+
+            <h3 class="form-label mt-3 mb-1">Select Brands</h3>
+
+            @for (brand of brandsNames; track $index)
+            {
+            <p class="col-lg-5 col-md-5 col-12 p-0 m-0"><mat-checkbox color="primary" [(ngModel)]="checkboxStates[brand]"
+                    (change)="filter()">{{brand}}</mat-checkbox></p>
+            }
+
+        </div>
+        <div class="row  m-0 p-0  ">
+            <h3 class="form-label mt-3 mb-1">Price in USA</h3>
+            <div class="col-12 m-0 text-center" >
+                <mat-slider discrete [min]="minPrice" [max]="maxPrice " class="d-block"  >
+                    <input [(ngModel)]="minvalue" matSliderStartThumb (change)="filter()">
+                    <input [(ngModel)]="maxvalue" matSliderEndThumb (change)="filter()">
+                </mat-slider>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-9 col-md-8 col-lg-10  mt-3 ms-0 me-0 mb-3">
+        <app-products-array [products]="filterProductList"></app-products-array>
+    </div>
+</div>

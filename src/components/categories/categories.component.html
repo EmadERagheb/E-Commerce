@@ -1,0 +1,9 @@
+<div class="catg-body">
+  @for (category of categories; track category.id) {
+  <a [routerLink]="'/category/'+category.id" class="catg">
+    <div class="catg-container">
+      <h4 class="fs-3"> {{category.name}}</h4>
+    </div>
+  </a>
+  }
+</div>

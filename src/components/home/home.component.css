@@ -1,0 +1,16 @@
+:host{
+  background-color: var(--third-color);
+}
+h2{
+  color: var(--sec-color);
+  font-size: 50px;
+  margin: 0;
+  font-weight: 700;
+  text-align: center;
+}
+.product{
+  transition: 0.5s;
+}
+.product:hover{
+  transform: scale(1.1);
+}

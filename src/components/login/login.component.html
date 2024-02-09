@@ -1,0 +1,23 @@
+<div class="main-container">
+    <div class="signup-container">
+        <div class="text-center mb-3">
+            <a routerLink="/Home"> <img src="assets/images/logo-white1__2.png" alt="logo" style="max-width: 50%;"> </a>
+        </div>
+        <div class="welcome">
+            <h1>Welcome!</h1>
+        </div>
+        @if (!isLoginPage) {
+        <div routerLink="/Login" class="signIn-btn">
+            <button  (click)="gotoSinIn()" class="signIn-btn">Sign In</button>
+        </div>
+        }
+        @else {
+        <div class=" q-text">
+        <p>Don't have an account?</p>
+
+            <button (click)="gotoSignUp()" class="signup-btn">Sign Up</button>
+        </div>
+        }
+
+    </div>
+</div>

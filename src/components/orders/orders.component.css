@@ -1,0 +1,7 @@
+.orders{
+  min-height: 50vh;
+}
+
+.theme-color{
+  color: var(--fourth-color);
+}

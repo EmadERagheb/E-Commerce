@@ -1,0 +1,21 @@
+<div class="cart">
+  <div class="card p-3 m-5">
+    <div *ngFor="let product of products;let i= index">
+      <app-product-cart (cartProductEvent)="onAction($event)" [product]="product"
+        [quantity]="productsQuantity[i]"></app-product-cart>
+    </div>
+    @if (products.length!=0 && totalPrice>=0.01)
+    {
+    <div class="text-center fs-1 fw-bold my-3">
+      Total Price: {{totalPrice|number:'1.1-2'}} $
+    </div>
+    <div>
+      <button class="btn my-3 w-100" routerLink="/Payment" [queryParams]="{ 'ID': cartId, 'totalPrice' : totalPrice }"
+        queryParamsHandling="merge">Check Out</button>
+    </div>
+    }
+    @else {
+    <div class="text-center fs-1 theme-color p-5">There are no items in cart</div>
+    }
+  </div>
+</div>

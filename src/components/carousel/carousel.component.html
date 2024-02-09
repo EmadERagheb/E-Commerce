@@ -1,0 +1,26 @@
+<div *ngIf="carouselImges&&carouselImges.length>0" class="carousel-container" style="  background-color: #01001F !important;">
+    @for (imge of carouselImges; track $index ) {
+    <img [src]="imge.imgSrc" [alt]="imge.imgAlt" [ngClass]="{'image-active':selectedIndex==$index}" class="fade">
+
+    }
+    @if (indecators==true) {
+    <div class="carousel-dot-container">
+        @for (imge of carouselImges; track $index) {
+        <span class="dot" [ngClass]="{'dot-active':selectedIndex==$index}" (click)="selectImage($index)"></span>
+        }
+    </div>
+    }
+    @if (controls==true) {
+    <div class="btn-carousel btn-prev">
+        <i class="fas fa-solid fa-chevron-left icon-carousel icon-prev"
+        (click)="onPrevClick()"></i>
+
+    </div>
+    <div class="btn-carousel btn-next">
+        <i class="fas fa-solid fa-chevron-right icon-carousel icon-next"
+        (click)="onNextClick()"></i>
+
+    </div>
+
+    }
+</div>

@@ -1,0 +1,14 @@
+.btn{
+  color: var(--white-color);
+  background-color: var(--main-color);
+  transition: 0.3s;
+}
+.btn:hover{
+  background-color: var(--sec-color);
+}
+.theme-color{
+  color: var(--fourth-color);
+}
+.cart{
+  min-height: 50vh;
+}

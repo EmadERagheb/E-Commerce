@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="my-3">
+    <app-bread-crumb [titles]="breadCrumbTitles" [links]="breadCrumbLinks"></app-bread-crumb>
+  </div>
+  <div>
+    @if (currentProduct) {
+    <app-product-details [avgRating]="avgRating"  [product]="currentProduct"></app-product-details>
+    }
+  </div>
+
+  <div class="my-5">
+    <h2 class="my-5 text-center fw-bold theme-color">You May Like</h2>
+    <div class="row">
+    @if (categoryProducts) {
+      @for (product of categoryProducts; track product.id)
+      {
+          <div class="col-12 col-md-6 col-lg-3 product">
+            <app-product [product]="product" [userWishList]="wishList"></app-product>
+          </div>
+      }
+        <!-- <div class="row">
+            <app-products-array [products]="categoryProducts"></app-products-array>
+        </div> -->
+    }
+    @else{
+      <div class="d-flex justify-content-center align-items-center my-5">
+        <app-spinner></app-spinner>
+      </div>
+    }
+  </div>
+</div>
+
+
+
+
+  <div class="row">
+    <div class="my-5">
+      <h2 class="text-center fw-bold theme-color" style="font-size: 22px;">Reviews</h2>
+      <app-create-review
+        [productID]="productId"
+        (reviewCreated)="handleReviewCreated($event)"
+        ></app-create-review>
+
+
+    <!-- @if (reviews) { -->
+      <app-reviews [reviews]="reviews!"></app-reviews>
+    <!-- }
+    @else{
+      <div class="d-flex justify-content-center align-items-center my-5">
+        <app-spinner></app-spinner>
+      </div>
+    } -->
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,41 @@
+@if (product) {
+
+<!-- Details -->
+<div class="box m-auto">
+  <div class="images col-6">
+    <div class="img-holder active ">
+      <img src="{{product.imageCover}}" (click)="zoomOptions">
+    </div>
+    <div class="img-holder border border-primary  " (click)="updateImage(product.images[0])">
+      <img src="{{product.images[0]}} " class="im" (click)="zoomOptions">
+    </div>
+    <div class="img-holder border border-primary " (click)="updateImage(product.images[1])">
+      <img src="{{product.images[1]}}" class="im " (click)="zoomOptions">
+    </div>
+    <div class="img-holder border border-primary  " (click)="updateImage(product.images[2])">
+      <img src="{{product.images[2]}}" class="im " (click)="zoomOptions">
+    </div>
+  </div>
+  <div class="basic-info">
+    <h1>{{product.name}}</h1>
+    <div class="rate">
+      <ngb-rating [(rate)]="avgRating == undefined? 0 : avgRating" [readonly]="true" [max]="5" class="rating-color"
+        style="  color: var(--rating-color);
+        font-size:30px;"></ngb-rating>
+    </div>
+    <span>${{product.price}}</span>
+    <div class="options">
+      <input type="button" (click)="AddToCart()" class="btn btn-success p-3 buttonX" value="{{buttonContent}}"
+        [disabled]="quantity===0">
+    </div>
+    @if (quantity===0) {
+    <div [style.color]="'var(--sec-color)'">out of stock</div>
+    }
+  </div>
+  <div class="description">
+    <p>Description:</p>
+    <p>{{product.description}}</p>
+
+  </div>
+</div>
+}

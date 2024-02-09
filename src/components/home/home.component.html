@@ -1,0 +1,58 @@
+<app-carousel [indecators]="false" [autoSlide]="true" [intervalInSecands]="5" [carouselImges]="images"></app-carousel>
+<!-- <app-slider></app-slider> -->
+<div class="container home m-auto">
+  <div class="my-5">
+    <app-categories [categories]="allCategories"></app-categories>
+  </div>
+  <div class="my-5">
+    <h2 class="text-center my-5">Smart Phones</h2>
+    @if (mobileCatg4.length!==0) {
+    <div class="row">
+      @for (pro of mobileCatg4; track $index) {
+      <div class="col-12 col-md-6 col-lg-3 product">
+        <app-product [product]="pro" [userWishList]="wishList"></app-product>
+      </div>
+      }
+    </div>
+    }
+    @else{
+    <div class="d-flex justify-content-center align-items-center my-5">
+      <app-spinner></app-spinner>
+    </div>
+    }
+  </div>
+  <div class="my-5">
+    <h2 class="text-center my-5">Smart Watches</h2>
+    @if (smartWatch4.length!==0) {
+    <div class="row">
+      @for (pro of smartWatch4; track $index) {
+      <div class="col-12 col-md-6 col-lg-3 product">
+        <app-product [product]="pro" [userWishList]="wishList"></app-product>
+      </div>
+      }
+    </div>
+    }
+    @else {
+    <div class="d-flex justify-content-center align-items-center my-5">
+      <app-spinner></app-spinner>
+    </div>
+    }
+  </div>
+  <div class="my-5">
+    <h2 class="text-center my-5">Laptops</h2>
+    @if (laptops4.length!==0) {
+    <div class="row">
+      @for (pro of laptops4; track $index) {
+      <div class="col-12 col-md-6 col-lg-3 product">
+        <app-product [product]="pro" [userWishList]="wishList"></app-product>
+      </div>
+      }
+    </div>
+    }
+    @else {
+    <div class="d-flex justify-content-center align-items-center my-5">
+      <app-spinner></app-spinner>
+    </div>
+    }
+  </div>
+</div>

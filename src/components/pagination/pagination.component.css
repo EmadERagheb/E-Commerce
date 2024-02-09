@@ -1,0 +1,23 @@
+.paginate{
+  background-color: var(--main-color);
+  color:white;
+}
+.paginate:active{
+  background-color: var(--sec-color);
+  color:white;
+}
+.pagination:hover{
+  cursor: pointer;
+}
+.pageee:active{
+  background-color: var(--sec-color) ;
+  color:white;
+}
+.pageee::selection{
+  background-color: var(--sec-color) !important;
+  color:white;
+}
+/* .pageee{
+  background-color: var(--sec-color);
+  color:white;
+} */

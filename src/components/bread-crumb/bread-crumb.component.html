@@ -1,0 +1,4 @@
+<span *ngFor="let title of titles; let i=index">
+  <a [routerLink]="links[i]" class="link">&nbsp;{{title}}&nbsp;&nbsp;</a>
+  <span>{{i< titles.length-1 ? '>>' : '' }}</span>
+  </span>

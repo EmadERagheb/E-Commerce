@@ -1,0 +1,14 @@
+.theme{
+  color: var(--fourth-color);
+}
+ngb-rating{
+  color: var(--rating-color);
+  font-size: 50px;
+}
+.img-cont{
+  width: 100px;
+}
+.star{
+  color: var(--rating-color);
+  font-size: 20px;
+}

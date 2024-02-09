@@ -1,0 +1,108 @@
+
+
+
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+
+}
+
+.signIn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    color: #fff;
+    background-color: #262626;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif */
+}
+
+.signIn-container h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.logo-container {
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 3rem;
+
+}
+
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.registration-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #262626;
+    margin-bottom: 2rem;
+
+}
+
+.signIn-container p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.signIn-container button {
+    width: 100%;
+    padding: 0.5rem 3rem;
+    margin-bottom: 1rem;
+    border: 1px solid #3dc47e;
+    border-radius: 0.5rem;
+    background-color: #262626;
+    color: #3dc47e;
+    font-weight: bold;
+    cursor: pointer;
+
+
+}
+
+.signIn-container button:hover {
+    background-color: #3dc47e;
+    color: #262626;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.register-btn {
+    display: flex;
+    width: 14rem;
+    padding: 1.3rem;
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #3dc47e;
+    color: #fff;
+    justify-content: center;
+
+
+}
+
+.register-btn.disabled {
+    background-color: #dedede;
+    color: #262626;
+    opacity: 0.5;
+    cursor: not-allowed;
+    justify-content: center;
+}
+

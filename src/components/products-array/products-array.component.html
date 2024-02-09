@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <ng-container *ngIf="getPaginatedProducts()">
+        @for (product of getPaginatedProducts(); track product.id)
+        {
+          <div class="col-12 col-md-6 col-lg-3 product">
+              <app-product [product]="product" [userWishList]="wishList"></app-product>
+          </div>
+        }
+        </ng-container>
+    </div>
+</div>
+<div style="margin-left:44%;">
+    <app-pagination
+            [currentPage]="currentPage"
+            [totalPages]="getTotalPages()"
+            (pageChange)="onPageChange($event)"
+    ></app-pagination>
+</div>

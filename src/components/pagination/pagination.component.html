@@ -1,0 +1,13 @@
+<div aria-label="Page navigation" style="margin: auto;">
+  <ul class="pagination" >
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="paginate page-link" (click)="onPageChange(currentPage - 1)" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item" *ngFor="let page of getPageArray(totalPages)">
+      <a class="pageee page-link" (click)="onPageChange(page)" [class.active]="currentPage === page">{{ page }}</a>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="paginate page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+    </li>
+  </ul>
+</div>
